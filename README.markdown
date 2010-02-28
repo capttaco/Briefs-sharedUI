@@ -7,9 +7,9 @@ When used in tandem with the [Briefs-data][1] project, one can create an iPhone 
 [1]: "http://github.com/capttaco/Briefs-data"
 
 
-How to Launch a Brief
----------------------
-To launch a brief (called `abrief.brieflist` below) that is part of the app resources bundle, use the following code for the `applicationDidFinishLaunching:` method in your App Delegate:
+How to Launch a Brief on App startup
+------------------------------------
+To auto-launch a brief (called `abrief.brieflist` below) that is part of the app resources bundle, use the following code for the `applicationDidFinishLaunching:` method in your App Delegate:
 
     - (void)applicationDidFinishLaunching:(UIApplication *)application 
     {
