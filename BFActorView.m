@@ -27,6 +27,10 @@
         // initialize the view
         self.frame = [source size];
         self.actor = source;
+        
+        // if actor is not visible, hide view as well
+        if ([self.actor visible] == NO)
+            self.alpha = 0.0f;
     }
 
     return self;
@@ -38,9 +42,23 @@
     [super dealloc];
 }
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event 
+{
+    // if there is a touched attribute
+    // load the image when the image has
+    // been pressed.
+    if (self.actor.touchedBg != nil)
+        self.image = [BFViewUtilityParser parseImageFromRepresentation:[self.actor touchedBg]];
+}
+
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event 
 {
+    // return to default image
+    if (self.actor.touchedBg != nil)
+        self.image = [BFViewUtilityParser parseImageFromRepresentation:[self.actor background]];
+
+    // execute action
     BFRootView *rootView = (BFRootView *) self.superview.superview;
     [rootView cancelGestureTimer];    
 
