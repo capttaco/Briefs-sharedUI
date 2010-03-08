@@ -25,8 +25,16 @@
         [self setUserInteractionEnabled:YES];
         
         // initialize the view
-        self.frame = [source size];
-        self.actor = source;
+        if (!source.scrollable)
+			self.frame = [source size];
+		
+//		else {
+//			UIScrollView *parent = (UIScrollView *) self.superview;
+//			[parent setContentSize:[source size].size];
+//			[parent setScrollEnabled:YES];
+//		}
+        
+		self.actor = source;
         
         // if actor is not visible, hide view as well
         if ([self.actor visible] == NO)
@@ -36,9 +44,9 @@
     return self;
 }
 
-- (void) dealloc 
+- (void)dealloc 
 {
-    [actor release];
+    [self.actor release];
     [super dealloc];
 }
 
@@ -59,7 +67,8 @@
         self.image = [BFViewUtilityParser parseImageFromRepresentation:[self.actor background]];
 
     // execute action
-    BFRootView *rootView = (BFRootView *) self.superview.superview;
+    BFRootView *rootView = (BFRootView *) (self.actor.scrollable ? 
+			self.superview.superview.superview : self.superview.superview);
     [rootView cancelGestureTimer];    
 
     if (self.actor.isActive == YES) {        

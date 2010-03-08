@@ -1,0 +1,3 @@
+[submodule "BriefsUITests/Classes/Briefs-data"]
+	path = BriefsUITests/Classes/Briefs-data
+	url = git://github.com/capttaco/Briefs-data.git

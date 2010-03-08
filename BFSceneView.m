@@ -28,9 +28,19 @@
         // display actors
         NSMutableArray *subViews = [NSMutableArray arrayWithCapacity:[[self.scene actors] count]];
         for (BFActor *actor in [self.scene actors]) {
-            BFActorView *view = [[BFActorView alloc] initWithActor:actor];
+			BFActorView *view = [[BFActorView alloc] initWithActor:actor];
             [subViews addObject:view];
-            [self addSubview:view];
+			
+			// handle scrollable actors
+			if (actor.scrollable) {
+				UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:[actor size]];
+				[scrollView addSubview:view];
+				[scrollView setContentSize:[view image].size];
+				[scrollView flashScrollIndicators];
+				[self addSubview:scrollView];
+			}
+			
+			else [self addSubview:view];
             
             [view release];
         }
@@ -44,8 +54,6 @@
     [scene release];
     [super dealloc];
 }
-
-
 
 
 @end
