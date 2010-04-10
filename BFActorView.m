@@ -57,6 +57,8 @@
     // been pressed.
     if (self.actor.touchedBg != nil)
         self.image = [BFViewUtilityParser parseImageFromRepresentation:[self.actor touchedBg]];
+    
+    [super touchesBegan:touches withEvent:event];
 }
 
 
