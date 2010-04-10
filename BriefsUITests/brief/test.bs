@@ -1,0 +1,22 @@
+# Scrollable Test (part of Briefs-sharedUI tests)
+# author: Rob Rhyne
+#
+start: Scrollable Start
+
+scene: Scrollable Start
+image: images/scene-bg.png
+    actor: Scrollable Actor
+        image: images/scrollable-actor.png
+        size: 237,251
+        scrollable: true
+        position: 42,54
+        action: toggle(Toggle Button)
+
+    actor: Toggle Button
+        image: images/enabled-actor.png
+        disabled: images/disabled-actor.png
+        size: 201,51
+        position: 60,394
+        # no action, this is just to validate
+        # the action firing from the scrollable
+   
