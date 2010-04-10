@@ -6,10 +6,8 @@
 //  Copyright Digital Arch Design, 2009. See LICENSE file for details.
 //
 
-#import <UIKit/UIKit.h>
 
-
-@interface BFRootView : UIView <UIActionSheetDelegate>
+@interface BFRootView : UIView
 {
     UIViewController    *viewController;
     NSTimer             *timer;
