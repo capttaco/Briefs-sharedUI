@@ -14,7 +14,7 @@
 
 @implementation BFSceneViewController
 
-@synthesize dataManager, current_scene;
+@synthesize dataManager, current_scene, delegate;
 
 ///////////////////////////////////////////////////////////////////////////////
 #pragma mark -
@@ -364,6 +364,13 @@
 - (BOOL)willShowKeyboard:(NSString *)type {
     // TODO: implement keyboard display
     return false;
+}
+
+- (void)willStopShowingScene
+{
+    if (self.delegate) {
+        [self.delegate sceneView:self shouldDismissView:YES];
+    }
 }
 
 
