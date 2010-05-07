@@ -10,14 +10,17 @@
 #import "BFSceneManager.h"
 #import "BFSceneView.h"
 
+@protocol BFSceneViewDelegate;
 @interface BFSceneViewController : UIViewController 
 {
-    BFSceneManager  *dataManager;
-    BFSceneView     *current_scene;
+    BFSceneManager          *dataManager;
+    BFSceneView             *current_scene;
+    id<BFSceneViewDelegate> delegate;
 }
 
 @property (nonatomic, retain) BFSceneManager    *dataManager;
 @property (nonatomic, retain) BFSceneView       *current_scene;
+@property (assign) id<BFSceneViewDelegate>      delegate;
 
 - (id)initWithSceneManager:(BFSceneManager*)manager;
 
@@ -33,8 +36,15 @@
 
 // Global Dispatch Methods
 - (BOOL)willShowKeyboard:(NSString *)type;
+- (void)willStopShowingScene;
 
 // Convenience Methods
 - (void)performTransition:(NSString *)transition onEnteringView:(BFSceneView *)entering removingOldView:(BFSceneView *)exiting;
 
 @end
+
+
+@protocol BFSceneViewDelegate
+- (void)sceneView:(BFSceneViewController *)controller shouldDismissView:(BOOL)animated;
+@end
+
