@@ -27,12 +27,6 @@
         // initialize the view
         if (!source.scrollable)
 			self.frame = [source size];
-		
-//		else {
-//			UIScrollView *parent = (UIScrollView *) self.superview;
-//			[parent setContentSize:[source size].size];
-//			[parent setScrollEnabled:YES];
-//		}
         
 		self.actor = source;
         
@@ -57,6 +51,8 @@
     // been pressed.
     if (self.actor.touchedBg != nil)
         self.image = [BFViewUtilityParser parseImageFromRepresentation:[self.actor touchedBg]];
+    
+    [super touchesBegan:touches withEvent:event];
 }
 
 
