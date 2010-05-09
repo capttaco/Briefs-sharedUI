@@ -36,10 +36,10 @@
     return self;
 }
 
-- (void)viewDidLoad
+- (void)loadView 
 {
     // TODO: do I need to add view allocation here?
-    self.view.backgroundColor = [UIColor blackColor];
+    
 }
 
 - (void)didReceiveMemoryWarning 
@@ -94,10 +94,8 @@
         if (self.current_scene != nil && transition != nil)
             [self performTransition:transition onEnteringView:scene_view removingOldView:self.current_scene];
             
-        else {
+        else
             [self.view addSubview:scene_view];
-            [self.current_scene removeFromSuperview];
-        }
         
         self.current_scene = scene_view;
         [scene_view release];
@@ -129,6 +127,8 @@
         // ease the new image back in
         stubView.alpha = 0.0f;
         actorView.alpha = 1.0f;
+        
+        [stubView release];
         
         // commit the animation stack
         [UIView commitAnimations];
@@ -241,10 +241,8 @@
 
         entering.transform = CGAffineTransformMakeTranslation(-tx, -ty);
         
-        [UIView beginAnimations:@"PushTransition" context:exiting];
+        [UIView beginAnimations:@"PushTransition" context:nil];
         [UIView setAnimationDuration:0.4f];
-        [UIView setAnimationDelegate:self];
-        [UIView setAnimationDidStopSelector:@selector(transitionDidComplete:finished:context:)];
         
         [self.view insertSubview:entering belowSubview:exiting];
         
@@ -299,10 +297,8 @@
         
         entering.transform = CGAffineTransformMakeTranslation(-tx, -ty);
         
-        [UIView beginAnimations:@"SlideTransition" context:exiting];
+        [UIView beginAnimations:@"SlideTransition" context:nil];
         [UIView setAnimationDuration:0.5f];
-        [UIView setAnimationDelegate:self];
-        [UIView setAnimationDidStopSelector:@selector(transitionDidComplete:finished:context:)];
         
         [self.view insertSubview:entering aboveSubview:exiting];
         entering.transform = CGAffineTransformMakeTranslation(0.0f, 0.0f);
@@ -324,10 +320,8 @@
         
         exiting.transform = CGAffineTransformMakeTranslation(0.0f, 0.0f);
         
-        [UIView beginAnimations:@"SlideTransition" context:exiting];
+        [UIView beginAnimations:@"SlideTransition" context:nil];
         [UIView setAnimationDuration:0.5f];
-        [UIView setAnimationDelegate:self];
-        [UIView setAnimationDidStopSelector:@selector(transitionDidComplete:finished:context:)];
         
         [self.view insertSubview:entering belowSubview:exiting];
         exiting.transform = CGAffineTransformMakeTranslation(tx, ty);
@@ -343,11 +337,8 @@
         
         exiting.alpha = 0.5f;
         
-        [UIView beginAnimations:@"ZoomTransition" context:exiting];
+        [UIView beginAnimations:@"ZoomTransition" context:nil];
         [UIView setAnimationDuration:0.4f];
-        [UIView setAnimationDelegate:self];
-        [UIView setAnimationDidStopSelector:@selector(transitionDidComplete:finished:context:)];
-        
         [self.view addSubview:entering];
         
         entering.transform = CGAffineTransformMakeScale(d0, d0);
@@ -365,12 +356,6 @@
     
     // commit the animation stack
     [UIView commitAnimations];
-}
-
-- (void)transitionDidComplete:(NSString *)animationId finished:(NSNumber *)finished context:(void *)context
-{
-    BFSceneView *exiting = context;
-    [exiting removeFromSuperview];
 }
 
 

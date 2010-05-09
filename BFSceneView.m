@@ -38,6 +38,8 @@
 				[scrollView setContentSize:[view image].size];
 				[scrollView flashScrollIndicators];
 				[self addSubview:scrollView];
+                
+                [scrollView release];
 			}
 			
 			else [self addSubview:view];
@@ -51,7 +53,8 @@
 
 - (void)dealloc 
 {
-    [scene release];
+    [self.scene release];
+    [self.actor_views release];
     [super dealloc];
 }
 
