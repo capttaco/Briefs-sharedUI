@@ -14,7 +14,6 @@
 }
 
 - (id)initWithFrame:(CGRect)frame andViewController:(UIViewController *)controller;
-- (void)cancelGestureTimer;
 
 
 @end

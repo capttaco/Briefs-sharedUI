@@ -12,6 +12,7 @@
 #import "BFViewUtilityParser.h"
 #import "BFUtilityParser.h"
 #import "BFConstants.h"
+#import "BFRootView+TapHoldGesture.h"
 
 
 @implementation BFActorView
