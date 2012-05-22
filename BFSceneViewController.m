@@ -31,7 +31,6 @@
         self.current_scene = scene_view;
         [self.view addSubview:scene_view];
         
-        [scene_view release];
     }
     return self;
 }
@@ -57,14 +56,6 @@
     self.current_scene = nil;
 }
 
-- (void)dealloc 
-{
-    if (current_scene != nil) {
-        [current_scene release];
-    }
-    [dataManager release];
-    [super dealloc];
-}
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -98,7 +89,6 @@
             [self.view addSubview:scene_view];
         
         self.current_scene = scene_view;
-        [scene_view release];
         
         return true;
     }

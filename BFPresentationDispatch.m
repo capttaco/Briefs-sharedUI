@@ -131,9 +131,5 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(BFPresentationDispatch);
 
 ///////////////////////////////////////////////////////////////////////////////
 
-- (void)dealloc
-{
-    [super dealloc];
-}
 
 @end

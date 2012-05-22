@@ -45,12 +45,6 @@
     return self;
 }
 
-- (void)dealloc 
-{
-    [self.actor release];
-    [super dealloc];
-}
-
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event 
 {
     // if there is a touched attribute

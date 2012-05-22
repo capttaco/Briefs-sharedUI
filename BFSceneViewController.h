@@ -15,12 +15,12 @@
 {
     BFSceneManager          *dataManager;
     BFSceneView             *current_scene;
-    id<BFSceneViewDelegate> delegate;
+    id<BFSceneViewDelegate> __unsafe_unretained delegate;
 }
 
-@property (nonatomic, retain) BFSceneManager    *dataManager;
-@property (nonatomic, retain) BFSceneView       *current_scene;
-@property (assign) id<BFSceneViewDelegate>      delegate;
+@property (nonatomic) BFSceneManager    *dataManager;
+@property (nonatomic) BFSceneView       *current_scene;
+@property (unsafe_unretained) id<BFSceneViewDelegate>      delegate;
 
 - (id)initWithSceneManager:(BFSceneManager*)manager;
 

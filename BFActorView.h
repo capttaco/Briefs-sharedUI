@@ -13,7 +13,7 @@
     BFActor *actor;
 }
 
-@property (nonatomic, retain) BFActor *actor;
+@property (nonatomic) BFActor *actor;
 
 // initialization
 - (id)initWithActor:(BFActor *)source;

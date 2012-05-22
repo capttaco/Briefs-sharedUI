@@ -42,18 +42,12 @@
 			
 			else [self addSubview:view];
             
-            [view release];
         }
         self.actor_views = subViews;
     }
     return self;
 }
 
-- (void)dealloc 
-{
-    [scene release];
-    [super dealloc];
-}
 
 
 @end

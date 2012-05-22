@@ -16,8 +16,8 @@
     NSArray *actor_views;
 }
 
-@property (nonatomic, retain) BFScene *scene;
-@property (nonatomic, retain) NSArray *actor_views;
+@property (nonatomic) BFScene *scene;
+@property (nonatomic) NSArray *actor_views;
 
 // initialization
 - (id)initWithScene:(BFScene *)source;

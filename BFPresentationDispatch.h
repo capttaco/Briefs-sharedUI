@@ -12,10 +12,10 @@
 
 @interface BFPresentationDispatch : NSObject <BFLocalActionDispatch, BFGlobalActionDispatch>
 {
-    BFSceneViewController *viewController;
+    BFSceneViewController *__unsafe_unretained viewController;
 }
 
-@property (assign) BFSceneViewController *viewController;
+@property (unsafe_unretained) BFSceneViewController *viewController;
 
 
 // Singleton Accessors
